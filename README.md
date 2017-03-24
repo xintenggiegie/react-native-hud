@@ -1,7 +1,8 @@
 # react-native-hud
 A hud for react-native, easy to use.
 ### 1.Installation
-'cd yourProjectPath'
+`cd yourProjectPath`
+
 `npm i react-native-easy-hud --save`
 ### 2.How to use
 * Import

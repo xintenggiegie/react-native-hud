@@ -1,87 +1,23 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "react-native-easy-hud",
-        "scope": null,
-        "escapedName": "react-native-easy-hud",
-        "name": "react-native-easy-hud",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
-      },
-      "/Users/liyonghui/Desktop/ReactNativeDemos/RNFirstDemo"
-    ]
-  ],
-  "_from": "react-native-easy-hud@latest",
-  "_id": "react-native-easy-hud@0.0.3",
-  "_inCache": true,
-  "_location": "/react-native-easy-hud",
-  "_nodeVersion": "7.5.0",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/react-native-easy-hud-0.0.3.tgz_1489570410321_0.03242080076597631"
-  },
-  "_npmUser": {
-    "name": "liyonghui16",
-    "email": "18335103323@163.com"
-  },
-  "_npmVersion": "4.1.2",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "react-native-easy-hud",
-    "scope": null,
-    "escapedName": "react-native-easy-hud",
-    "name": "react-native-easy-hud",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "http://registry.npmjs.org/react-native-easy-hud/-/react-native-easy-hud-0.0.3.tgz",
-  "_shasum": "7b167dffea5677dff1559c0b6377c4af20550d6c",
-  "_shrinkwrap": null,
-  "_spec": "react-native-easy-hud",
-  "_where": "/Users/liyonghui/Desktop/ReactNativeDemos/RNFirstDemo",
-  "author": {
-    "name": "livan"
-  },
-  "bugs": {
-    "url": "https://github.com/liyonghui16/react-native-hud/issues"
-  },
-  "dependencies": {},
-  "description": "A easy hud for react-native",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "7b167dffea5677dff1559c0b6377c4af20550d6c",
-    "tarball": "https://registry.npmjs.org/react-native-easy-hud/-/react-native-easy-hud-0.0.3.tgz"
-  },
-  "homepage": "https://github.com/liyonghui16/react-native-hud#readme",
-  "keywords": [
-    "react-native",
-    "hud"
-  ],
-  "license": "UNLICENSED",
-  "main": "index.js",
-  "maintainers": [
-    {
-      "name": "liyonghui16",
-      "email": "18335103323@163.com"
-    }
-  ],
   "name": "react-native-easy-hud",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
+  "version": "0.0.8",
+  "description": "A easy hud for react-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liyonghui16/react-native-hud.git"
   },
-  "scripts": {
-    "test": "none"
+  "keywords": [
+    "react-native",
+    "hud"
+  ],
+  "author": "livan",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/liyonghui16/react-native-hud/issues"
   },
-  "version": "0.0.3"
+  "homepage": "https://github.com/liyonghui16/react-native-hud#readme"
 }

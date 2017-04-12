@@ -24,21 +24,44 @@ export default class HudView extends Component {
   };
 
   static propTypes = {
+    /*
+    * Hud's type.Default is 'indicator'.
+    * */
     hudType: React.PropTypes.oneOf(['text', 'indicator', 'combine']),
+    /*
+    * Hud's message for type 'text'、'combine'.Default is 'Loading'.
+    * */
     message: React.PropTypes.string,
+    /*
+    * Message's color. Default is 'white'.
+    * */
     msgColor: ColorPropType,
+    /*
+    * Message's fontSize. Default is 15.
+    * */
     msgFontSize: React.PropTypes.number,
+    /*
+    * Message's textAlign. Default is 'center'.
+    * */
     msgAlign: React.PropTypes.string,
+    /*
+    * If set, hud will hide automatically after delay. Unit is second. Default is 0, that mean hud can't hide automatically.
+    * */
     delay: React.PropTypes.number,
+    /*
+    * Direction for hudType-[combine]. Default is 'row'.
+    * */
+    direction: React.PropTypes.oneOf(['row', 'column'])
   };
 
   static defaultProps = {
     hudType: 'indicator',
     message: 'Loading...',
     msgColor: 'white',
-    msgFontSize: 14,
+    msgFontSize: 15,
     msgAlign: 'center',
     delay: 0,
+    direction: 'row',
   };
 
   /*
@@ -59,17 +82,13 @@ export default class HudView extends Component {
   * Hid hudView
   * */
   hide() {
-    if (this._calledComponentWillUnmount) {
+    // Return when component called componentWillUnmount or hud is not showing.
+    if (this._calledComponentWillUnmount || !this.state.isShowing) {
       return;
     }
     this.setState({
       isShowing: false,
     });
-  }
-
-  componentWillUnmount() {
-    // Do nothing.
-    // resolve Warning: setState(...): Can only update a mounted or mounting component. This usually means you called setState() on an unmounted component.
   }
 
   /*
@@ -83,17 +102,24 @@ export default class HudView extends Component {
     this.show();
   }
 
+  componentWillUnmount() {
+    // Do nothing.
+    // resolve Warning: setState(...): Can only update a mounted or mounting component.
+    // This usually means you called setState() on an unmounted component.
+  }
+
   _measureHeightAndWidth() {
+    const DoubleMargin = 8 * 2;
     const msg = this.state.flag ? this.state.msg : this.props.message;
     const size = this.props.msgFontSize;
 
     let msgLessThanOneLine: boolean = msg.length * size / 220 < 1;
     if (msgLessThanOneLine) {
       let width: number = msg.length * size;
-      return {width: width + 20, height: size + 10 * 2}
+      return {width: width + DoubleMargin, height: size + DoubleMargin}
     } else {
       let height: number = msg.length * size / 220 * size;
-      return {width: 220 + 10 * 2, height: height + 10 * 2};
+      return {width: 220 + DoubleMargin, height: height + DoubleMargin};
     }
   }
 
@@ -107,9 +133,12 @@ export default class HudView extends Component {
                 color: this.props.msgColor,
                 textAlign: this.props.msgAlign,
               }}
+              key="text"
         >{this.state.flag ? this.state.msg : this.props.message}
         </Text>
       );
+      const combineW: number = this.props.direction === 'row' ? textStyle.width + 36 + 8 : textStyle.width;
+      const combineH: number = this.props.direction === 'row' ? textStyle.height + 16 : textStyle.height + 36 + 8;
       if (this.props.hudType === 'indicator') {
         content = (
           <View style={styles.defaultHud}>
@@ -122,11 +151,11 @@ export default class HudView extends Component {
             {text}
           </View>
         );
-      } else if (this.props.hudType === 'textIndicator') {
+      } else if (this.props.hudType === 'combine') {
         content = (
-          <View style={[styles.textHud, {width: textStyle.width, height: textStyle.height + 36 + 8}]}>
-            <ActivityIndicator size="large"/>
-            {text}
+          <View style={[styles.textHud, {width: combineW, height: combineH, flexDirection: this.props.direction}]}>
+            {[(<ActivityIndicator size="large" key="indicator" />),
+              text]}
           </View>
         );
       } else {
@@ -150,8 +179,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
     position: 'absolute',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height - 64 - 49,
+    width: '100%',
+    height: '100%',
   },
   defaultHud: {
     width: 80,

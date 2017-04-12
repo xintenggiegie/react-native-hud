@@ -1,3 +1,3 @@
-import HudView from './src/index.js'
-module.export HudView
+import HudView from './src/HudView';
+module.exports = HudView;
 

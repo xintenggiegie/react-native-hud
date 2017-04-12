@@ -3,7 +3,6 @@
 A hud for react-native, easy to use.Required react-native version >= 0.42.0
 
 ### 1.Installation
-
 `cd yourProjectPath`
 
 `npm i react-native-easy-hud --save`
